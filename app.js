@@ -31,15 +31,9 @@ const postPage = (req, res) => {
 
 http.createServer((req, res) => {
   // ルート(/)へのGETリクエストの時の処理
-  if (req.url === '/' && req.method === 'GET') {
-    indexPage(req, res);
-  }
-  
+  if (req.url === '/' && req.method === 'GET')indexPage(req, res);
   // /postPageへのpostリクエストの時の処理
-  else if (req.url === '/postPage' && req.method === 'POST'){
-   postPage(req, res);
-  }
-
+  else if (req.url === '/postPage' && req.method === 'POST')postPage(req, res);
   // その他
   else{
     res.statusCode = 404;
