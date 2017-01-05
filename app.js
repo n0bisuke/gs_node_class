@@ -5,6 +5,7 @@ const fs = require('fs');
 const PORT = 3000;
 
 http.createServer((req, res) => {
+  // ルート(/)へのGETリクエストの時の処理
   if (req.url === '/' && req.method === 'GET') {
     fs.readFile(__dirname + '/index.html', {encoding: 'utf8'}, (err, html) => {
       if (err) {
@@ -18,6 +19,18 @@ http.createServer((req, res) => {
       }
    });
   }
+  
+  // /postPageへのpostリクエストの時の処理
+  else if (req.url === '/postPage' && req.method === 'POST'){
+
+  }
+
+  // その他
+  else{
+    res.statusCode = 404;
+    res.end('Not Found!!');
+  }
+
 }).listen(PORT);
  
 console.log(`Server running at http://localhost:${PORT}`);
