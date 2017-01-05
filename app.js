@@ -22,7 +22,14 @@ http.createServer((req, res) => {
   
   // /postPageへのpostリクエストの時の処理
   else if (req.url === '/postPage' && req.method === 'POST'){
-
+    let body = '';
+    req.on('readable', (chunk) => {
+        body += req.read();
+    });
+    req.on('end', () => {
+        if(body === '' || body === null) return;
+        res.end(body);
+    });
   }
 
   // その他
